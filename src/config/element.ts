@@ -15,6 +15,7 @@ export interface WidgetForm {
   config: {
     pageNo: string
     pageName: string
+    pageUrl: string
     size: string
     hideRequiredAsterisk: boolean
     labelWidth: number
@@ -39,6 +40,7 @@ export const widgetForm: WidgetForm = {
   config: {
     pageNo: '',
     pageName: '',
+    pageUrl: '',
     size: 'default',
     hideRequiredAsterisk: false,
     labelWidth: 100,
@@ -297,6 +299,17 @@ export const basicComponents = [
 
 export const advanceComponents = [
   {
+    label: '按钮',
+    type: 'button',
+    options: {
+      width: '100%',
+      disabled: false,
+      actionNo: '',
+      businessNoList: [],
+      fieldNoList: []
+    }
+  },
+  {
     label: '图片',
     type: 'img-upload',
     options: {
@@ -347,7 +360,7 @@ export const advanceComponents = [
 
 export const layoutComponents = [
   {
-    label: '栅格布局',
+    label: '区域布局',
     type: 'grid',
     columns: [
       {

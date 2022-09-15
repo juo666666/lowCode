@@ -7,6 +7,9 @@
       <el-form-item label="页面名称">
         <el-input v-model="data.pageName"  />
       </el-form-item>
+      <el-form-item label="页面路径">
+        <el-input v-model="data.pageUrl"  />
+      </el-form-item>
 
       <el-form-item label="标签对齐方式">
         <el-radio-group v-model="data.labelPosition">

@@ -51,6 +51,16 @@
       </template>
       生成代码
     </el-button>
+    <el-button
+      v-if="$attrs.saveJson"
+      type="text"
+      @click="$emit('saveJson')"
+    >
+      <template #icon>
+        <SvgIcon iconClass="generate-json" />
+      </template>
+      保存
+    </el-button>
   </el-header>
 </template>
 
@@ -63,6 +73,6 @@ export default defineComponent({
   components: {
     SvgIcon
   },
-  emits: ['uploadJson', 'clearable', 'preview', 'generateJson', 'generateCode']
+  emits: ['uploadJson', 'clearable', 'preview', 'generateJson', 'generateCode', 'saveJson']
 })
 </script>

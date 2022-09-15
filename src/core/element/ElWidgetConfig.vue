@@ -12,8 +12,16 @@
       <el-input v-model="data.options.width" />
     </el-form-item>
 
-    <el-form-item label="占位内容" v-if="hasKey('placeholder')">
-      <el-input v-model="data.options.placeholder" />
+    <el-form-item label="绑定事件" v-if="hasKey('actionNo')">
+      <el-input v-model="data.options.actionNo" />
+    </el-form-item>
+
+    <el-form-item label="绑定功能包" v-if="hasKey('businessNoList')">
+      <el-input v-model="data.options.businessNoList" />
+    </el-form-item>
+
+    <el-form-item label="绑定字段" v-if="hasKey('fieldNoList')">
+      <el-input v-model="data.options.fieldNoList" placeholder="请填写事件绑定字段标识" />
     </el-form-item>
 
     <el-form-item

@@ -28,6 +28,7 @@
               @preview="() => (previewVisible = true)"
               @uploadJson="() => (uploadJsonVisible = true)"
               @generateJson="handleGenerateJson"
+              @saveJson="handleSaveJson"
               @generateCode="handleGenerateCode"
               @clearable="handleClearable"
             >
@@ -205,6 +206,10 @@ export default defineComponent({
       type: Boolean,
       default: true
     },
+    saveJson: {
+      type: Boolean,
+      default: true
+    },
     uploadJson: {
       type: Boolean,
       default: true
@@ -233,14 +238,15 @@ export default defineComponent({
     },
     advanceFields: {
       type: Array as PropType<Array<string>>,
-      default: () => ['img-upload', 'richtext-editor', 'cascader']
+      default: () => ['button', 'img-upload', 'richtext-editor', 'cascader']
     },
     layoutFields: {
       type: Array as PropType<Array<string>>,
       default: () => ['grid']
     }
   },
-  setup() {
+  emits: ['sendSavejson'],
+  setup(sProps, ctx) {
     const state = reactive({
       element,
       codeType: CodeType,
@@ -296,6 +302,10 @@ export default defineComponent({
         2
       )) && (state.generateJsonVisible = true)
 
+    const handleSaveJson = () => {
+      ctx.emit('sendSavejson', JSON.stringify(state.widgetForm))
+    }
+
     const handleGenerateCode = () => {
       state.codeLanguage = CodeType.Vue
       state.dataCodeVisible = true
@@ -343,6 +353,7 @@ export default defineComponent({
       handleCopyClick,
       handleGetData,
       handleGenerateJson,
+      handleSaveJson,
       handleGenerateCode,
       handleClearable,
       handleReset,

@@ -4,10 +4,19 @@
       class="widget-view"
       v-if="element"
       :key="element.key"
-      :class="{ active: selectWidget?.key === element.key }"
-      :label="element.label"
+      :class="{ active: selectWidget?.key === element.key, isButton: element.type === 'button' }"
+      :label="element.type !== 'button' ? element.label : ''"
       :rules="element.options.rules"
     >
+      <template v-if="element.type === 'button'">
+        <el-button
+          :style="{ width: element.options.width }"
+          :disabled="element.options.disabled"
+        >
+          {{ element.label }}
+        </el-button>
+      </template>
+
       <template v-if="element.type === 'input'">
         <el-input
           readonly
@@ -282,3 +291,8 @@ export default defineComponent({
   emits: ['copy', 'delete']
 })
 </script>
+<style scoped>
+    ::v-deep .isButton .el-form-item__content{
+      margin-left: 10px!important;
+    }
+</style>
